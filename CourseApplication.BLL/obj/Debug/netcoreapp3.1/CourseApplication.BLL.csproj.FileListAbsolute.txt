@@ -1,0 +1,17 @@
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.BLL.deps.json
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.BLL.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.csprojAssemblyReference.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.AssemblyInfoInputs.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.AssemblyInfo.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.BLL.runtimeconfig.json
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.BLL.runtimeconfig.dev.json
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.genruntimeconfig.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.BLL.pdb
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.DAL.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.Models.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.DAL.pdb
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.Models.pdb
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.csproj.CopyComplete
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.pdb

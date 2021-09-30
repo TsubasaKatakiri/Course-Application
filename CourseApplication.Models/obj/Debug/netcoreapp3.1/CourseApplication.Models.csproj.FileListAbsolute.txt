@@ -1,0 +1,12 @@
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\bin\Debug\netcoreapp3.1\CourseApplication.Models.deps.json
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\bin\Debug\netcoreapp3.1\CourseApplication.Models.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\obj\Debug\netcoreapp3.1\CourseApplication.Models.csprojAssemblyReference.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\obj\Debug\netcoreapp3.1\CourseApplication.Models.AssemblyInfoInputs.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\obj\Debug\netcoreapp3.1\CourseApplication.Models.AssemblyInfo.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\bin\Debug\netcoreapp3.1\CourseApplication.Models.runtimeconfig.json
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\bin\Debug\netcoreapp3.1\CourseApplication.Models.runtimeconfig.dev.json
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\obj\Debug\netcoreapp3.1\CourseApplication.Models.genruntimeconfig.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\bin\Debug\netcoreapp3.1\CourseApplication.Models.pdb
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\obj\Debug\netcoreapp3.1\CourseApplication.Models.csproj.CoreCompileInputs.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\obj\Debug\netcoreapp3.1\CourseApplication.Models.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.Models\obj\Debug\netcoreapp3.1\CourseApplication.Models.pdb

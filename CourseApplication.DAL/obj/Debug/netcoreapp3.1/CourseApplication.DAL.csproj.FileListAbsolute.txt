@@ -1,0 +1,15 @@
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\bin\Debug\netcoreapp3.1\CourseApplication.DAL.deps.json
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\bin\Debug\netcoreapp3.1\CourseApplication.DAL.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\obj\Debug\netcoreapp3.1\CourseApplication.DAL.csprojAssemblyReference.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\obj\Debug\netcoreapp3.1\CourseApplication.DAL.AssemblyInfoInputs.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\obj\Debug\netcoreapp3.1\CourseApplication.DAL.AssemblyInfo.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\bin\Debug\netcoreapp3.1\CourseApplication.DAL.runtimeconfig.json
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\bin\Debug\netcoreapp3.1\CourseApplication.DAL.runtimeconfig.dev.json
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\obj\Debug\netcoreapp3.1\CourseApplication.DAL.genruntimeconfig.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\bin\Debug\netcoreapp3.1\CourseApplication.DAL.pdb
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\bin\Debug\netcoreapp3.1\CourseApplication.Models.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\bin\Debug\netcoreapp3.1\CourseApplication.Models.pdb
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\obj\Debug\netcoreapp3.1\CourseApplication.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\obj\Debug\netcoreapp3.1\CourseApplication.DAL.csproj.CopyComplete
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\obj\Debug\netcoreapp3.1\CourseApplication.DAL.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.DAL\obj\Debug\netcoreapp3.1\CourseApplication.DAL.pdb

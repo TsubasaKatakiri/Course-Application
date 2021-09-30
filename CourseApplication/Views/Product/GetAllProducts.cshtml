@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CourseApplication.BLL.VMs.Product.ProductData>
+
+@{
+    ViewData["Title"] = "Products";
+}
+<div class="container">
+    <div class="row d-flex justify-content-between my-3">
+        <form class="w-100" asp-controller="Product" asp-action="GetProductsByName">
+            <div class="input-group mb-3">
+                <label class="control-label"></label>
+                <input type="text" class="form-control" placeholder="Enter product name..." aria-label="Search" aria-describedby="button-addon">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="button-addon">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row d-flex justify-content-between my-3">
+        <h3>Our products</h3>
+        <div>
+            <a class="btn btn-primary" asp-controller="Product" asp-action="CreateNewProduct">Create new product</a>
+            <a class="btn btn-primary" asp-controller="Brand" asp-action="CreateNewBrand">Create new brand</a>
+            <a class="btn btn-primary" asp-controller="Category" asp-action="CreateNewCategory">Create new category</a>
+        </div>
+    </div>
+    <div class="row d-flex flex-column align-items-center">
+        @{
+            @if (Model.Count() == 0)
+            {
+                <span class="text-muted">Oops! Looks like we cannot find any products according to your request.</span>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="card mb-3 w-100">
+                        <div class="card-header">
+                            <h4>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3">
+
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="font-weight-light font-italic">Category: <span>@Html.DisplayFor(modelItem => item.CategoryName)</span></p>
+                                        <h3 class="text-danger font-weight-bold">USD $@Html.DisplayFor(modelItem => item.Price)</h3>
+                                        <p>About product:</p>
+                                        <p class="text-black-50">@Html.DisplayFor(modelItem => item.ShortDescription)</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        @Html.ActionLink("Details", "GetProductById", new { id = item.ProductId })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+
+</div>
