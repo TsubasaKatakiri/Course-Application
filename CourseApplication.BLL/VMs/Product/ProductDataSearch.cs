@@ -4,7 +4,9 @@ using System.Text;
 
 namespace CourseApplication.BLL.VMs.Product
 {
-    class ProductDataSearch
+    public class ProductDataSearch
     {
+        public ProductSearch ProductSearch { get; set; }
+        public List<ProductData> ProductData { get; set; }
     }
 }

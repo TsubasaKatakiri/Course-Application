@@ -47,6 +47,8 @@ namespace CourseApplication
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<ICartService, CartService>();
+            services.AddScoped<IWishlistService, WishlistService>();
 
             services.AddControllersWithViews();
         }

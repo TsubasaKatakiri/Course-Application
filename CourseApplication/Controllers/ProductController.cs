@@ -31,6 +31,7 @@ namespace CourseApplication.Controllers
         [HttpGet]
         public ActionResult GetAllProducts()
         {
+
             var products = _productService.FindProduct(null);
             return View(products);
         }

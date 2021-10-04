@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CourseApplication.BLL.Interfaces;
 using CourseApplication.BLL.VMs.Identity;
 using CourseApplication.Models;
 using Microsoft.AspNetCore.Http;
@@ -14,11 +15,16 @@ namespace CourseApplication.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly ICartService _cartService;
+        private readonly IWishlistService _wishlistService;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,
+            ICartService cartService, IWishlistService wishlistService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _cartService = cartService;
+            _wishlistService = wishlistService;
         }
 
         [HttpGet]
@@ -32,7 +38,11 @@ namespace CourseApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email, Name = model.Name };
+                //creating individual carts and wishlists
+                Guid cartId = await _cartService.CreateCartAsync();
+                Guid wishlistId = await _wishlistService.CreateWishlistAsync();
+                //creating new user
+                User user = new User { Email = model.Email, UserName = model.Email, Name = model.Name, CartId = cartId, WishlistId = wishlistId };
                 // adding user
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
