@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CourseApplication.BLL.VMs.Order.OrderData>
+
+@{
+    ViewData["Title"] = "Orders list";
+}
+<div class="container">
+    <div class="row d-flex justify-content-between my-3">
+        <h3>Orders list</h3>
+    </div>
+    <div class="row d-flex flex-column align-items-center">
+        @{
+            @if (Model.Count() == 0)
+            {
+                <span class="text-muted">Currently no user orders is present in database.</span>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="card mb-3 w-100">
+                        <div class="card-header">
+                            <h4>
+                                Order @Html.DisplayFor(modelItem => item.OrderId)
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <p class="font-weight-light font-italic">Order created: <span>@Html.DisplayFor(modelItem => item.DateCreated)</span></p>
+                                    <p class="font-weight-light font-italic">Full name: <span>@Html.DisplayFor(modelItem => item.FullName)</span></p>
+                                    <p class="font-weight-light font-italic">
+                                        Address:
+                                        @{ if (item.Apartments != null)
+                                            {
+                                                <span>Apt. @Html.DisplayFor(modelItem => item.Apartments), </span>
+                                            }
+                                        }
+                                        <span>@Html.DisplayFor(modelItem => item.House)</span>&nbsp;<span>@Html.DisplayFor(modelItem => item.Street)</span><br />
+                                        <span>@Html.DisplayFor(modelItem => item.PostalIndex)</span>&nbsp;
+                                        <span>@Html.DisplayFor(modelItem => item.Region)</span>&nbsp;
+                                        <span>@Html.DisplayFor(modelItem => item.City)</span>
+                                        <br />
+                                        <span>@Html.DisplayFor(modelItem => item.Country)</span>
+                                    </p>
+                                    <p class="font-weight-light font-italic">Telephone: <span>@Html.DisplayFor(modelItem => item.Telephone)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            @foreach (var position in item.PositionList)
+                            {
+                                <li class="list-group-item">
+                                    <div>
+                                        <h4>@Html.DisplayFor(modelItem => position.Name)</h4>
+                                        <p class="font-weight-light font-italic">Brand: <span>@Html.DisplayFor(modelItem => position.BrandName)</span></p>
+                                        <p class="font-weight-light font-italic">Category: <span>@Html.DisplayFor(modelItem => position.CategoryName)</span></p>
+                                        <p class="font-weight-light font-italic">Description: <span>@Html.DisplayFor(modelItem => position.ShortDescription)</span></p>
+                                        <h5 class="text-danger font-weight-bold">USD $@Html.DisplayFor(modelItem => position.Price)</h5>
+                                        <p class="font-weight-light font-italic">Quantity: <span>@Html.DisplayFor(modelItem => position.Number)</span></p>
+                                        <h5 class="font-weight-light font-italic">Total cost: <span>@Html.DisplayFor(modelItem => position.TotalPrice)</span></h5>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <div class="card-body">
+                            <h5>Total order cost:<span class="text-danger">@Html.DisplayFor(modelItem => item.TotalCost)</span></h5>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+
+</div>

@@ -22,9 +22,10 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetCartById(Guid id)
+        public ActionResult GetCartById()
         {
-            var cart = _cartService.FindCartById(id);
+            var userId = Guid.Parse(_userManager.GetUserId(User));
+            var cart = _cartService.FindCartById(userId);
             return View(cart);
         }
     }

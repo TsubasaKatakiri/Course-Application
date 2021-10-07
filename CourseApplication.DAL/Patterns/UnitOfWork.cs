@@ -15,10 +15,13 @@ namespace CourseApplication.DAL.Patterns
         private IRepository<Cart> _carts;
         private IRepository<Category> _categories;
         private IRepository<Order> _orders;
+        private IRepository<CartPosition> _cartPositions;
         private IRepository<OrderPosition> _orderPositions;
         private IRepository<Product> _products;
         private IRepository<Review> _reviews;
+        private IRepository<UserDeliveryData> _userDeliveryData;
         private IRepository<Wishlist> _wishlists;
+        private IRepository<WishlistPosition> _wishlistPositions;
 
         private bool _disposed = false;
 
@@ -32,10 +35,13 @@ namespace CourseApplication.DAL.Patterns
         public IRepository<Cart> Carts => _carts ??= new Repository<Cart>(_db);
         public IRepository<Category> Categories => _categories ??= new Repository<Category>(_db);
         public IRepository<Order> Orders => _orders ??= new Repository<Order>(_db);
+        public IRepository<CartPosition> CartPositions => _cartPositions ??= new Repository<CartPosition>(_db);
         public IRepository<OrderPosition> OrderPositions => _orderPositions ??= new Repository<OrderPosition>(_db);
         public IRepository<Product> Products => _products ??= new Repository<Product>(_db);
         public IRepository<Review> Reviews => _reviews ??= new Repository<Review>(_db);
+        public IRepository<UserDeliveryData> UserDeliveryData => _userDeliveryData ??= new Repository<UserDeliveryData>(_db);
         public IRepository<Wishlist> Wishlists => _wishlists ??= new Repository<Wishlist>(_db);
+        public IRepository<WishlistPosition> WishlistPositions => _wishlistPositions ??= new Repository<WishlistPosition>(_db);
 
         public async Task SaveAsync()
         {

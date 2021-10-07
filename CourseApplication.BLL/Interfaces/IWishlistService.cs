@@ -8,7 +8,7 @@ namespace CourseApplication.BLL.Interfaces
 {
     public interface IWishlistService
     {
-        Task<Guid> CreateWishlistAsync();
-        List<WishlistData> FindWishlistById(Guid id);
+        Task<Guid> CreateWishlistAsync(Guid userId);
+        WishlistData FindWishlistById(Guid id);
     }
 }

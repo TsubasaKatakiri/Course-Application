@@ -1,4 +1,6 @@
-﻿using CourseApplication.BLL.VMs.Review;
+﻿using CourseApplication.BLL.VMs.Brand;
+using CourseApplication.BLL.VMs.Category;
+using CourseApplication.BLL.VMs.Review;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,6 +32,15 @@ namespace CourseApplication.BLL.VMs.Product
         public int OrderNumber { get; set; }
         public int WishlistNumber { get; set; }
 
+        public bool InWishlist { get; set; } = false;
+        public Guid? WishlistPositionId { get; set; } = null;
+
+        public bool InCart { get; set; } = false;
+        public Guid? CartPositionId { get; set; } = null;
+
         public virtual List<ReviewData> Reviews { get; set; } = new List<ReviewData>();
+
+        public List<BrandData> BrandsList { get; set; } = new List<BrandData>();
+        public List<CategoryData> CategoryList { get; set; } = new List<CategoryData>();
     }
 }

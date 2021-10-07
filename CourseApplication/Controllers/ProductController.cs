@@ -17,14 +17,24 @@ namespace CourseApplication.Controllers
         private readonly IProductService _productService;
         private readonly IBrandService _brandService;
         private readonly ICategoryService _categoryService;
+        private readonly IWishlistService _wishlistService;
+        private readonly IWishlistPositionService _wishlistPositionService;
+        private readonly ICartService _cartService;
+        private readonly ICartPositionService _cartPositionService;
 
         public ProductController(UserManager<User> userManager, IProductService productService,
-            IBrandService brandService, ICategoryService categoryService)
+            IBrandService brandService, ICategoryService categoryService, IWishlistService wishlistService,
+             IWishlistPositionService wishlistPositionService, ICartService cartService,
+             ICartPositionService cartPositionService)
         {
             _userManager = userManager;
             _productService = productService;
             _brandService = brandService;
             _categoryService = categoryService;
+            _wishlistService = wishlistService;
+            _wishlistPositionService = wishlistPositionService;
+            _cartService = cartService;
+            _cartPositionService = cartPositionService;
         }
 
         //Get all products
@@ -45,9 +55,24 @@ namespace CourseApplication.Controllers
 
         //Get a product by its ID
         [HttpGet]
-        public ActionResult GetProductById(Guid id)
+        public async Task<IActionResult> GetProductById(Guid id)
         {
             var product = _productService.FindProduct(p => p.Id == id).SingleOrDefault();
+            var userId = Guid.Parse(_userManager.GetUserId(User));
+            var wishlist = _wishlistService.FindWishlistById(userId);
+            var cart = _cartService.FindCartById(userId);
+            Guid? wishlistPositionId = await _wishlistPositionService.FindWishlistPositionByWishlistIdAsync(wishlist.WishlistId, id);
+            if(wishlistPositionId != null)
+            {
+                product.InWishlist = true;
+                product.WishlistPositionId = wishlistPositionId;
+            }
+            Guid? cartPositionId = await _cartPositionService.FindCartPositionByCartIdAsync(cart.CartId, id);
+            if (cartPositionId != null)
+            {
+                product.InCart = true;
+                product.CartPositionId = cartPositionId;
+            }
             return View(product);
         }
 
@@ -86,11 +111,15 @@ namespace CourseApplication.Controllers
         public ActionResult EditProduct(Guid id)
         {
             var product = _productService.FindProduct(p => p.Id == id).SingleOrDefault();
+            var categories = _categoryService.FindCategory(null);
+            product.CategoryList = categories;
+            var brands = _brandService.FindBrand(null);
+            product.BrandsList = brands;
             return View(product);
         }
 
-        //Editing existing product (PUT)
-        [HttpPut]
+        //Editing existing product (POST)
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditProduct([FromForm] ProductData product)
         {
@@ -109,8 +138,8 @@ namespace CourseApplication.Controllers
             }
         }
 
-        //Deleting existing product (DELETE)
-        [HttpDelete]
+        //Deleting existing product (POST)
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteProduct(Guid id)
         {

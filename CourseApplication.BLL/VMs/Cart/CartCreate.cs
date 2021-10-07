@@ -7,6 +7,7 @@ namespace CourseApplication.BLL.VMs.Cart
 {
     public class CartCreate
     {
-        public List<OrderPositionCreate> PositionList { get; set; }
+        public Guid UserId { get; set; }
+        public List<CartPositionCreate> PositionList { get; set; }
     }
 }

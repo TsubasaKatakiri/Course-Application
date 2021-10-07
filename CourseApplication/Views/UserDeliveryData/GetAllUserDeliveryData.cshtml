@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CourseApplication.BLL.VMs.UserDeliveryData.UserDeliveryDataInfo>
+
+@{
+    ViewData["Title"] = "UserDeliveryData";
+}
+<div class="container">
+    <div class="row d-flex justify-content-between my-3">
+        <h3>User Delivery Data</h3>
+        <div>
+            <a class="btn btn-primary" asp-controller="UserDeliveryData" asp-action="CreateUserDeliveryData">Add delivery data</a>
+        </div>
+    </div>
+    <div class="row d-flex flex-column align-items-center">
+        @{
+            @if (Model.Count() == 0)
+            {
+                <span class="text-muted">No current user delivery data is present in our database. Try to add something!</span>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="card mb-3 w-100">
+                        <div class="card-header">
+                            <h4>
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <p class="font-weight-light font-italic">Postal index: <span>@Html.DisplayFor(modelItem => item.PostalIndex)</span></p>
+                                        <p class="font-weight-light font-italic">Country: <span>@Html.DisplayFor(modelItem => item.Country)</span></p>
+                                        <p class="font-weight-light font-italic">Region: <span>@Html.DisplayFor(modelItem => item.Region)</span></p>
+                                        <p class="font-weight-light font-italic">City: <span>@Html.DisplayFor(modelItem => item.City)</span></p>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <p class="font-weight-light font-italic">Street: <span>@Html.DisplayFor(modelItem => item.Street)</span></p>
+                                        <p class="font-weight-light font-italic">House: <span>@Html.DisplayFor(modelItem => item.House)</span></p>
+                                        <p class="font-weight-light font-italic">Apartments: <span>@Html.DisplayFor(modelItem => item.Apartments)</span></p>
+                                        <p class="font-weight-light font-italic">Telephone: <span>@Html.DisplayFor(modelItem => item.Telephone)</span></p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <form method="get" asp-controller="UserDeliveryData" asp-action="EditUserDeliveryData" asp-route-id="@item.DataId">
+                                            <button type="submit" class="btn btn-primary">Edit data</button>
+                                        </form>
+                                        <form method="post" asp-controller="UserDeliveryData" asp-action="DeleteUserDeliveryData" asp-route-id="@item.DataId">
+                                            <button type="submit" class="btn btn-primary">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+
+</div>

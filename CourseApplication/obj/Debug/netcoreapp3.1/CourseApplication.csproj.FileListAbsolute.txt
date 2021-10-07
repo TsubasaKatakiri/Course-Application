@@ -100,3 +100,12 @@ C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\D
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Product\GetProductById.cshtml.g.cs
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Account\OpenPersonalCabinet.cshtml.g.cs
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Review\CreateReview.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Cart\GetCartById.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Wishlist\GetWishlistById.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\UserDeliveryData\CreateUserDeliveryData.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\UserDeliveryData\EditUserDeliveryData.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\UserDeliveryData\GetAllUserDeliveryData.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Order\CreateNewOrder.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Order\GetAllOrders.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Order\GetAllUserOrders.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Product\EditProduct.cshtml.g.cs

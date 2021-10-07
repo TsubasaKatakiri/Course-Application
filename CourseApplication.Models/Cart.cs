@@ -9,6 +9,6 @@ namespace CourseApplication.Models
         public Guid UserId { get; set; }
         public virtual User User { get; set; }
 
-        public virtual List<OrderPosition> PositionList { get; set; } = new List<OrderPosition>();
+        public virtual List<CartPosition> PositionList { get; set; } = new List<CartPosition>();
     }
 }

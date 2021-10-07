@@ -22,9 +22,42 @@
                         <p class="font-weight-light font-italic">Category: <span>@Html.DisplayFor(model => model.CategoryName)</span></p>
                         <h3 class="text-danger font-weight-bold">USD $@Html.DisplayFor(model => model.Price)</h3>
                         <p class="font-weight-light font-italic">Available: <span>@Html.DisplayFor(model => model.Quantity)</span></p>
-                        <button class="btn btn-primary">Add to cart</button>
-                        <p class="font-weight-light font-italic">Ordered: <span>@Html.DisplayFor(model => model.OrderNumber)</span></p>
-                        <button class="btn btn-primary">Add to wishlist</button>
+                        @{
+                            if (Model.Quantity > 0)
+                            {
+                                if (Model.InCart == false)
+                                {
+                                    <form method="post" asp-controller="CartPosition" asp-action="CreateCartPosition" asp-route-productId="@Model.ProductId">
+                                        <button type="submit" class="btn btn-primary">Add to cart</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form method="post" asp-controller="CartPosition" asp-action="DeleteCartPosition" asp-route-positionId="@Model.CartPositionId">
+                                        <button type="submit" class="btn btn-primary">Remove from cart</button>
+                                    </form>
+                                }
+                            }
+                            else
+                            {
+                                <h4 class="text-danger font-weight-bold">Sorry, this product is no longer available!</h4>
+                            }
+                        }
+
+                        <p class="font-weight-light font-italic">Orders: <span>@Html.DisplayFor(model => model.OrderNumber)</span></p>
+                        @{ if (Model.InWishlist == false)
+                            {
+                                <form method="post" asp-controller="WishlistPosition" asp-action="CreateWishlistPosition" asp-route-productId="@Model.ProductId">
+                                    <button type="submit" class="btn btn-primary">Add to wishlist</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form method="post" asp-controller="WishlistPosition" asp-action="DeleteWishlistPosition" asp-route-positionId="@Model.WishlistPositionId">
+                                    <button type="submit" class="btn btn-primary">Remove  from wishlist</button>
+                                </form>
+                            }
+                        }
                         <p class="font-weight-light font-italic">In users wishlists: <span>@Html.DisplayFor(model => model.WishlistNumber)</span></p>
                     </div>
                 </div>

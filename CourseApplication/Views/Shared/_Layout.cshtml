@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -32,10 +34,18 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Cart" asp-action="GetCartById">My Cart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Wishlist" asp-action="GetWishlistById">My Wishlist</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Account" asp-action="OpenPersonalCabinet">Welcome , @User.Identity.Name</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Log out</a>
+                                <form method="post" asp-controller="Account" asp-action="Logout">
+                                    <input class="btn btn-link nav-link text-dark" type="submit" value="Log out" />
+                                </form>
                             </li>
                         }
                         else

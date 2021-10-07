@@ -2,6 +2,7 @@
 using CourseApplication.BLL.VMs.Product;
 using CourseApplication.BLL.VMs.Review;
 using CourseApplication.BLL.VMs.Wishlist;
+using CourseApplication.BLL.VMs.WishlistPosition;
 using CourseApplication.DAL.Patterns;
 using CourseApplication.Models;
 using System;
@@ -21,11 +22,13 @@ namespace CourseApplication.BLL.Services
 
         private readonly IUnitOfWork _db;
 
-        public async Task<Guid> CreateWishlistAsync()
+        public async Task<Guid> CreateWishlistAsync(Guid userId)
         {
             try
             {
-                var wishlist = new Wishlist() { };
+                var wishlist = new Wishlist() {
+                    UserId = userId
+                };
                 wishlist = await _db.Wishlists.CreateAsync(wishlist);
 
                 return wishlist.Id;
@@ -36,51 +39,30 @@ namespace CourseApplication.BLL.Services
             }
         }
 
-        public List<WishlistData> FindWishlistById(Guid id)
+        public WishlistData FindWishlistById(Guid id)
         {
             try
             {
-                var wishlist = _db.Wishlists.GetAll().Where(w => w.Id == id).ToList();
-                return wishlist.Select(c =>
+                var wishlist = _db.Wishlists.GetAll().Where(w => w.UserId == id).SingleOrDefault();
+                return new WishlistData()
                 {
-                    return new WishlistData()
+                    WishlistId = wishlist.Id,
+                    UserId = wishlist.UserId,
+                    ProductList = wishlist.PositionList.Select(p =>
                     {
-                        WishlistId = c.Id,
-                        ProductList = c.ProductList.Select(p =>
+                        return new WishlistPositionData()
                         {
-                            return new ProductData()
-                            {
-                                ProductId = p.Id,
-                                Name = p.Name,
-                                CategoryId = p.CategoryId,
-                                CategoryName = p.Category.Name,
-                                BrandId = p.BrandId,
-                                BrandName = p.Brand.Name,
-                                ShortDescription = p.ShortDescription,
-                                LongDescription = p.LongDescription,
-                                Score = p.Score,
-                                Quantity = p.Quantity,
-                                Price = p.Price,
-                                //ActionId = p.ActionId,
-                                OrderNumber = p.OrderNumber,
-                                WishlistNumber = p.WishlistNumber,
-                                Reviews = p.Reviews.Select(r =>
-                                {
-                                    return new ReviewData()
-                                    {
-                                        ReviewId = r.Id,
-                                        ProductId = r.ProductId,
-                                        DateCreated = r.DateCreated,
-                                        //Username = r.User.UserName,
-                                        Score = r.Score,
-                                        Text = r.Text,
-                                        ProductName = r.Product.Name,
-                                    };
-                                }).OrderByDescending(o => o.DateCreated).ToList()
-                            };
-                        }).ToList()
-                    };
-                }).ToList();
+                            ProductId = p.ProductId,
+                            WishlistId = p.WishlistId,
+                            WishlistPositionId = p.Id,
+                            Name = p.Product.Name,
+                            ShortDescription = p.Product.ShortDescription,
+                            BrandName = p.Product.Brand.Name,
+                            CategoryName = p.Product.Category.Name,
+                            Price = p.Product.Price
+                        };
+                    }).ToList()
+                };
             }
             catch (Exception ex)
             {

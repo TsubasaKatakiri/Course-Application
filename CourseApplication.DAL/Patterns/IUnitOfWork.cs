@@ -13,10 +13,13 @@ namespace CourseApplication.DAL.Patterns
         IRepository<Cart> Carts { get; }
         IRepository<Category> Categories { get; }
         IRepository<Order> Orders { get; }
+        IRepository<CartPosition> CartPositions { get; }
         IRepository<OrderPosition> OrderPositions { get; }
         IRepository<Product> Products { get; }
         IRepository<Review> Reviews { get; }
+        IRepository<UserDeliveryData> UserDeliveryData { get; }
         IRepository<Wishlist> Wishlists { get; }
+        IRepository<WishlistPosition> WishlistPositions { get; }
 
         Task SaveAsync();
     }

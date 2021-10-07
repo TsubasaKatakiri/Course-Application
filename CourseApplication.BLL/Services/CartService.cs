@@ -20,11 +20,13 @@ namespace CourseApplication.BLL.Services
 
         private readonly IUnitOfWork _db;
 
-        public async Task<Guid> CreateCartAsync()
+        public async Task<Guid> CreateCartAsync(Guid userId)
         {
             try
             {
-                var cart = new Cart() { };
+                var cart = new Cart() {
+                    UserId = userId
+                };
                 cart = await _db.Carts.CreateAsync(cart);
 
                 return cart.Id;
@@ -35,32 +37,33 @@ namespace CourseApplication.BLL.Services
             }
         }
 
-        public List<CartData> FindCartById(Guid id)
+        public CartData FindCartById(Guid id)
         {
             try
             {
-                var cart = _db.Carts.GetAll().Where(c => c.Id == id).ToList();
-                return cart.Select(c =>
+                var cart = _db.Carts.GetAll().Where(c => c.UserId == id).SingleOrDefault();
+                return new CartData()
                 {
-                    return new CartData()
+                    CartId = cart.Id,
+                    UserId = cart.UserId,
+                    TotalCost = cart.PositionList.Sum(l => l.Product.Price * l.Number),
+                    PositionList = cart.PositionList.Select(p =>
                     {
-                        CartId = c.Id,
-                        TotalCost = c.PositionList.Sum(l => l.Product.Price * l.Number),
-                        PositionList = c.PositionList.Select(p =>
+                        return new CartPositionData()
                         {
-                            return new OrderPositionData()
-                            {
-                                Name = p.Product.Name,
-                                ShortDescription = p.Product.ShortDescription,
-                                BrandName = p.Product.Brand.Name,
-                                CategoryName = p.Product.Category.Name,
-                                Price = p.Product.Price,
-                                Number = p.Number,
-                                TotalPrice = p.Product.Price * p.Number
-                            };
-                        }).ToList()
-                    };
-                }).ToList();
+                            ProductId = (Guid)p.ProductId,
+                            CartId = p.CartId,
+                            Id = p.Id,
+                            Name = p.Product.Name,
+                            ShortDescription = p.Product.ShortDescription,
+                            BrandName = p.Product.Brand.Name,
+                            CategoryName = p.Product.Category.Name,
+                            Price = p.Product.Price,
+                            Number = p.Number,
+                            TotalPrice = p.Product.Price * p.Number
+                        };
+                    }).ToList()
+                };
             }
             catch (Exception ex)
             {

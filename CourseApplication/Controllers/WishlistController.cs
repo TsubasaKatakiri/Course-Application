@@ -22,9 +22,10 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetWishlistById(Guid id)
+        public ActionResult GetWishlistById()
         {
-            var wishlist = _wishlistService.FindWishlistById(id);
+            var userId = Guid.Parse(_userManager.GetUserId(User));
+            var wishlist = _wishlistService.FindWishlistById(userId);
             return View(wishlist);
         }
     }

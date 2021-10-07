@@ -38,15 +38,16 @@ namespace CourseApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                //creating individual carts and wishlists
-                Guid cartId = await _cartService.CreateCartAsync();
-                Guid wishlistId = await _wishlistService.CreateWishlistAsync();
                 //creating new user
-                User user = new User { Email = model.Email, UserName = model.Email, Name = model.Name, CartId = cartId, WishlistId = wishlistId };
+                User user = new User { Email = model.Email, UserName = model.Email, Name = model.Name};
                 // adding user
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //creating individual carts and wishlists
+                    var userId= Guid.Parse(user.Id);
+                    await _cartService.CreateCartAsync(userId);
+                    await _wishlistService.CreateWishlistAsync(userId);
                     // installing cookies
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");

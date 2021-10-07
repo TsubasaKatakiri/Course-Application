@@ -1,5 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CourseApplication.BLL.VMs.Cart.CartData
+
 @{
+    ViewData["Title"] = "My cart";
 }
+<div class="container">
+    <div class="row d-flex justify-content-between my-3">
+        <h3>My cart</h3>
+        <p>@Html.DisplayFor(model => model.UserId)</p>
+    </div>
+    <div class="row d-flex flex-column align-items-center">
+        @{
+            @if (Model.PositionList.Count() == 0)
+            {
+                <span class="text-muted">Oops! Looks like your wishlist is empty. Try to add some products!</span>
+            }
+            else
+            {
+                @foreach (var item in Model.PositionList)
+                {
+                    <div class="card mb-3 w-100">
+                        <div class="card-header">
+                            <h4>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3">
+
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="font-weight-light font-italic">Category: <span>@Html.DisplayFor(modelItem => item.CategoryName)</span></p>
+                                        <h5 class="text-danger font-weight-bold">USD $@Html.DisplayFor(modelItem => item.Price)</h5>
+                                        <p>Quantity: <span>@Html.DisplayFor(modelItem => item.Number)</span></p>
+                                        <h4 class="font-weight-bold">Total price: <span class="text-danger">USD $ @Html.DisplayFor(modelItem => item.TotalPrice)</span></h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <form method="post" asp-controller="CartPosition" asp-action="DeleteCartPosition" asp-route-positionId="@item.Id">
+                                            <button type="submit" class="btn btn-primary">Delete from cart</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+    <div class="row d-flex justify-content-between my-3">
+        <h4>Total cost: <span class="text-danger">USD $@Html.DisplayFor(model => model.TotalCost)</span></h4>
+        <a class="btn btn-primary" asp-controller="Order" asp-action="CreateNewOrder">Proceed to order</a>
+    </div>
+</div>

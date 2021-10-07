@@ -8,7 +8,7 @@ namespace CourseApplication.BLL.Interfaces
 {
     public interface ICartService
     {
-        Task<Guid> CreateCartAsync();
-        List<CartData> FindCartById(Guid id);
+        Task<Guid> CreateCartAsync(Guid userId);
+        CartData FindCartById(Guid id);
     }
 }

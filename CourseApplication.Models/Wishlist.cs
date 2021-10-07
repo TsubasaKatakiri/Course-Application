@@ -9,6 +9,6 @@ namespace CourseApplication.Models
         public Guid UserId { get; set; }
         public virtual User User { get; set; }
 
-        public virtual List<Product> ProductList { get; set; } = new List<Product>();
+        public virtual List<WishlistPosition> PositionList { get; set; } = new List<WishlistPosition>();
     }
 }
