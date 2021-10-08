@@ -34,7 +34,7 @@ namespace CourseApplication.Controllers
                 IdentityResult result = await _roleManager.CreateAsync(new IdentityRole(name));
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("GetRoles");
                 }
                 else
                 {
@@ -55,7 +55,7 @@ namespace CourseApplication.Controllers
             {
                 IdentityResult result = await _roleManager.DeleteAsync(role);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("GetRoles");
         }
 
         [HttpGet]
@@ -78,7 +78,6 @@ namespace CourseApplication.Controllers
                 };
                 return View(model);
             }
-
             return NotFound();
         }
 

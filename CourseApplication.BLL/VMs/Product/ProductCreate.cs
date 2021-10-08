@@ -1,5 +1,7 @@
 ﻿using CourseApplication.BLL.VMs.Brand;
 using CourseApplication.BLL.VMs.Category;
+using CourseApplication.BLL.VMs.Files;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,5 +22,7 @@ namespace CourseApplication.BLL.VMs.Product
 
         public List<BrandData> BrandsList { get; set; } = new List<BrandData>();
         public List<CategoryData> CategoryList { get; set; } = new List<CategoryData>();
+
+        public List<IFormFile> Files { get; set; }
     }
 }

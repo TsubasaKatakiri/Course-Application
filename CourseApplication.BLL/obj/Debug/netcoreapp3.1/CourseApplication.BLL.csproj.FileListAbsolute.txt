@@ -11,7 +11,7 @@ C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\b
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.Models.dll
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.DAL.pdb
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\bin\Debug\netcoreapp3.1\CourseApplication.Models.pdb
-C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.csproj.CoreCompileInputs.cache
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.csproj.CopyComplete
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.dll
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.pdb
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication.BLL\obj\Debug\netcoreapp3.1\CourseApplication.BLL.csproj.CoreCompileInputs.cache

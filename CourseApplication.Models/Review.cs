@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CourseApplication.Models
 {
-    public class Review : BaseEntity
+    public class Review : MediaEntity
     {
         public Guid UserId { get; set; }
         public virtual User User { get; set; }

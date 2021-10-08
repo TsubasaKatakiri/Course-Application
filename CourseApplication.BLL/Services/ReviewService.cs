@@ -1,9 +1,11 @@
 ﻿using CourseApplication.BLL.Interfaces;
+using CourseApplication.BLL.VMs.Files;
 using CourseApplication.BLL.VMs.Review;
 using CourseApplication.DAL.Patterns;
 using CourseApplication.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +36,29 @@ namespace CourseApplication.BLL.Services
                     Text = _review.Text
                 };
                 review = await _db.Reviews.CreateAsync(review);
+
+                if (_review.Files != null && _review.Files.Any())
+                {
+                    var files = _review.Files.ToList();
+                    foreach (var item in files)
+                    {
+                        var file = new Files()
+                        {
+                            MediaEntityId = review.Id,
+                            Name = Path.GetFileName(item.FileName),
+                            FileType = Path.GetExtension(item.FileName),
+                            CreatedOn = DateTime.Now
+                        };
+
+                        using (var target = new MemoryStream())
+                        {
+                            item.CopyTo(target);
+                            file.DataFiles = target.ToArray();
+                        }
+                        file = await _db.Files.CreateAsync(file);
+                    }
+                }
+
                 await RecalculateProductScore(review.ProductId);
                 return review.Id;
             }
@@ -117,6 +142,17 @@ namespace CourseApplication.BLL.Services
                         Score = r.Score,
                         Text = r.Text,
                         ProductName = r.Product.Name,
+                        Files = r.Files.Select(f =>
+                        {
+                            return new FileCreate()
+                            {
+                                EntityId = f.MediaEntityId,
+                                Name = f.Name,
+                                FileType = f.FileType,
+                                DataFiles = f.DataFiles,
+                                CreatedOn = f.CreatedOn
+                            };
+                        }).ToList(),
                     };
                 }).ToList();
             }

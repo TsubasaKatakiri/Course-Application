@@ -1,10 +1,12 @@
 ﻿using CourseApplication.BLL.Interfaces;
+using CourseApplication.BLL.VMs.Files;
 using CourseApplication.BLL.VMs.Product;
 using CourseApplication.BLL.VMs.Review;
 using CourseApplication.DAL.Patterns;
 using CourseApplication.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -37,6 +39,29 @@ namespace CourseApplication.BLL.Services
                     WishlistNumber = 0,
                 };
                 product = await _db.Products.CreateAsync(product);
+
+                //file save to database
+                if (_product.Files != null && _product.Files.Any())
+                {
+                    var files = _product.Files.ToList();
+                    foreach(var item in files)
+                    {
+                        var file = new Files()
+                        {
+                            MediaEntityId = product.Id,
+                            Name = Path.GetFileName(item.FileName),
+                            FileType = Path.GetExtension(item.FileName),
+                            CreatedOn = DateTime.Now
+                        };
+
+                        using (var target = new MemoryStream())
+                        {
+                            item.CopyTo(target);
+                            file.DataFiles = target.ToArray();
+                        }
+                        file = await _db.Files.CreateAsync(file);
+                    }
+                }
                 return product.Id;
             }
             catch (Exception ex)
@@ -106,9 +131,19 @@ namespace CourseApplication.BLL.Services
                         Score = p.Score,
                         Quantity = p.Quantity,
                         Price = p.Price,
-                        //ActionId = p.ActionId,
                         OrderNumber = p.OrderNumber,
                         WishlistNumber = p.WishlistNumber,
+                        Files = p.Files.Select(f =>
+                        {
+                            return new FileCreate()
+                            {
+                                EntityId = f.MediaEntityId,
+                                Name = f.Name,
+                                FileType =f.FileType,
+                                DataFiles = f.DataFiles,
+                                CreatedOn = f.CreatedOn
+                            };
+                        }).ToList(),
                         Reviews = p.Reviews.Select(r =>
                         {
                             return new ReviewData()

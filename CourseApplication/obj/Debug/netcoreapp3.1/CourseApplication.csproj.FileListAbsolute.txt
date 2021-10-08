@@ -117,3 +117,6 @@ C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\D
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Users\CreateUser.cshtml.g.cs
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Users\EditUser.cshtml.g.cs
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Users\UserList.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll

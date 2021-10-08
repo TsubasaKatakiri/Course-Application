@@ -15,6 +15,7 @@ namespace CourseApplication.DAL.Patterns
         private IRepository<Cart> _carts;
         private IRepository<Category> _categories;
         private IRepository<Order> _orders;
+        private IRepository<Files> _files;
         private IRepository<CartPosition> _cartPositions;
         private IRepository<OrderPosition> _orderPositions;
         private IRepository<Product> _products;
@@ -35,6 +36,7 @@ namespace CourseApplication.DAL.Patterns
         public IRepository<Cart> Carts => _carts ??= new Repository<Cart>(_db);
         public IRepository<Category> Categories => _categories ??= new Repository<Category>(_db);
         public IRepository<Order> Orders => _orders ??= new Repository<Order>(_db);
+        public IRepository<Files> Files => _files ??= new Repository<Files>(_db);
         public IRepository<CartPosition> CartPositions => _cartPositions ??= new Repository<CartPosition>(_db);
         public IRepository<OrderPosition> OrderPositions => _orderPositions ??= new Repository<OrderPosition>(_db);
         public IRepository<Product> Products => _products ??= new Repository<Product>(_db);

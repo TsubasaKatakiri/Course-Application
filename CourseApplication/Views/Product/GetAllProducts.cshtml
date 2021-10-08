@@ -44,7 +44,10 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-3">
-
+                                        @foreach (var f in item.Files)
+                                        {
+                                            <img src="data:image;base64,@System.Convert.ToBase64String(f.DataFiles)" class="w-100 h-100"/>
+                                        }
                                     </div>
                                     <div class="col-sm-7">
                                         <p class="font-weight-light font-italic">Category: <span>@Html.DisplayFor(modelItem => item.CategoryName)</span></p>

@@ -12,6 +12,7 @@ namespace CourseApplication.DAL
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartPosition> CartPositions { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Files> Files { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderPosition> OrderPositions { get; set; }
         public DbSet<Product> Products { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,10 +42,15 @@ namespace CourseApplication.Controllers
         [HttpGet]
         public ActionResult GetAllProducts()
         {
-
             var products = _productService.FindProduct(null);
             return View(products);
         }
+
+        //[HttpGet]
+        //public FileStreamResult GetImage(Guid Id)
+        //{
+        //    return File();
+        //}
 
         //[HttpGet]
         //public ActionResult GetAllProducts([FromForm] ProductSearch productSearch)

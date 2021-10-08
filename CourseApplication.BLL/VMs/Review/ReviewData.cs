@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseApplication.BLL.VMs.Files;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,5 +15,7 @@ namespace CourseApplication.BLL.VMs.Review
         public int Score { get; set; }
         public string Text { get; set; }
         public string ProductName { get; set; }
+
+        public List<FileCreate> Files { get; set; } = new List<FileCreate>();
     }
 }

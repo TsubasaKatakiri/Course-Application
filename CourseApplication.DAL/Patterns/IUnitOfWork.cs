@@ -12,6 +12,7 @@ namespace CourseApplication.DAL.Patterns
         IRepository<Brand> Brands { get; }
         IRepository<Cart> Carts { get; }
         IRepository<Category> Categories { get; }
+        IRepository<Files> Files { get; }
         IRepository<Order> Orders { get; }
         IRepository<CartPosition> CartPositions { get; }
         IRepository<OrderPosition> OrderPositions { get; }

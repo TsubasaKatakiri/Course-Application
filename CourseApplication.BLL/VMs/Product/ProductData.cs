@@ -1,5 +1,6 @@
 ﻿using CourseApplication.BLL.VMs.Brand;
 using CourseApplication.BLL.VMs.Category;
+using CourseApplication.BLL.VMs.Files;
 using CourseApplication.BLL.VMs.Review;
 using System;
 using System.Collections.Generic;
@@ -42,5 +43,7 @@ namespace CourseApplication.BLL.VMs.Product
 
         public List<BrandData> BrandsList { get; set; } = new List<BrandData>();
         public List<CategoryData> CategoryList { get; set; } = new List<CategoryData>();
+
+        public List<FileCreate> Files { get; set; } = new List<FileCreate>();
     }
 }

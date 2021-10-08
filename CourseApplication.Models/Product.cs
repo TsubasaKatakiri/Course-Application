@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CourseApplication.Models
 {
-    public class Product : BaseEntity
+    public class Product : MediaEntity
     {
         [Required]
         public string Name { get; set; }
