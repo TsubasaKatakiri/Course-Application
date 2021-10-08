@@ -124,6 +124,9 @@ namespace CourseApplication.Controllers
         [HttpGet]
         public IActionResult OpenPersonalCabinet()
         {
+            var user = _userManager.GetUserAsync(User);
+            ViewBag.Username = User.Identity.Name;
+            ViewBag.UserId = _userManager.GetUserId(User);
             return View();
         }
     }

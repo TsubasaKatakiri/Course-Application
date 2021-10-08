@@ -23,6 +23,8 @@ namespace CourseApplication.BLL.VMs.Order
 
         public string Telephone { get; set; }
 
+        public string FullAddressString { get; set; }
+
         public decimal TotalCost { get; set; }
 
         public Guid CartId { get; set; }

@@ -34,6 +34,9 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Users" asp-action="UserList">Admin console</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Cart" asp-action="GetCartById">My Cart</a>
                             </li>
                             <li class="nav-item">

@@ -97,6 +97,10 @@ namespace CourseApplication.BLL.Services
                         Apartments = o.UserDeliveryData.Apartments,
                         FullName = o.UserDeliveryData.FullName,
                         Telephone = o.UserDeliveryData.Telephone,
+                        FullAddressString = o.UserDeliveryData.PostalIndex + " " + o.UserDeliveryData.Country + ", " 
+                        + o.UserDeliveryData.Region + ", " + o.UserDeliveryData.City + ", " + o.UserDeliveryData.Street + " " 
+                        + o.UserDeliveryData.House + "-" + o.UserDeliveryData.Apartments + ", " 
+                        + o.UserDeliveryData.FullName + ", tel." + o.UserDeliveryData.Telephone,
                         TotalCost = o.PositionList.Sum(l => l.Product.Price * l.Number),
                         PositionList = o.PositionList.Select(p =>
                         {

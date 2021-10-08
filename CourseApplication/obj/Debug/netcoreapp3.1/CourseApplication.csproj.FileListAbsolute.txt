@@ -109,3 +109,11 @@ C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\D
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Order\GetAllOrders.cshtml.g.cs
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Order\GetAllUserOrders.cshtml.g.cs
 C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Product\EditProduct.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Roles\CreateRole.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Roles\EditRoles.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Roles\GetRoles.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Roles\UserList.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Users\ChangePassword.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Users\CreateUser.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Users\EditUser.cshtml.g.cs
+C:\Users\Tsubasa Katakiri\source\repos\CourseApplication\CourseApplication\obj\Debug\netcoreapp3.1\Razor\Views\Users\UserList.cshtml.g.cs

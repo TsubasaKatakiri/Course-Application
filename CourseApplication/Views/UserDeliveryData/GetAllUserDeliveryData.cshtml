@@ -30,23 +30,21 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-5">
-                                        <p class="font-weight-light font-italic">Postal index: <span>@Html.DisplayFor(modelItem => item.PostalIndex)</span></p>
-                                        <p class="font-weight-light font-italic">Country: <span>@Html.DisplayFor(modelItem => item.Country)</span></p>
-                                        <p class="font-weight-light font-italic">Region: <span>@Html.DisplayFor(modelItem => item.Region)</span></p>
-                                        <p class="font-weight-light font-italic">City: <span>@Html.DisplayFor(modelItem => item.City)</span></p>
+                                        <p class="font-weight-light font-italic mb-1"><b>Postal index:</b> <span>@Html.DisplayFor(modelItem => item.PostalIndex)</span></p>
+                                        <p class="font-weight-light font-italic mb-1"><b>Country</b>: <span>@Html.DisplayFor(modelItem => item.Country)</span></p>
+                                        <p class="font-weight-light font-italic mb-1"><b>Region</b>: <span>@Html.DisplayFor(modelItem => item.Region)</span></p>
+                                        <p class="font-weight-light font-italic mb-1"><b>City</b>: <span>@Html.DisplayFor(modelItem => item.City)</span></p>
                                     </div>
                                     <div class="col-sm-5">
-                                        <p class="font-weight-light font-italic">Street: <span>@Html.DisplayFor(modelItem => item.Street)</span></p>
-                                        <p class="font-weight-light font-italic">House: <span>@Html.DisplayFor(modelItem => item.House)</span></p>
-                                        <p class="font-weight-light font-italic">Apartments: <span>@Html.DisplayFor(modelItem => item.Apartments)</span></p>
-                                        <p class="font-weight-light font-italic">Telephone: <span>@Html.DisplayFor(modelItem => item.Telephone)</span></p>
+                                        <p class="font-weight-light font-italic mb-1"><b>Street</b>: <span>@Html.DisplayFor(modelItem => item.Street)</span></p>
+                                        <p class="font-weight-light font-italic mb-1"><b>House</b>: <span>@Html.DisplayFor(modelItem => item.House)</span></p>
+                                        <p class="font-weight-light font-italic mb-1"><b>Apartments</b>: <span>@Html.DisplayFor(modelItem => item.Apartments)</span></p>
+                                        <p class="font-weight-light font-italic mb-1"><b>Telephone</b>: <span>@Html.DisplayFor(modelItem => item.Telephone)</span></p>
                                     </div>
                                     <div class="col-sm-2">
-                                        <form method="get" asp-controller="UserDeliveryData" asp-action="EditUserDeliveryData" asp-route-id="@item.DataId">
-                                            <button type="submit" class="btn btn-primary">Edit data</button>
-                                        </form>
-                                        <form method="post" asp-controller="UserDeliveryData" asp-action="DeleteUserDeliveryData" asp-route-id="@item.DataId">
-                                            <button type="submit" class="btn btn-primary">Delete</button>
+                                        <a class="btn btn-primary w-100 mb-2" asp-controller="UserDeliveryData" asp-action="CEditUserDeliveryData" asp-route-id="@item.DataId">Edit</a>
+                                        <form class="w-100" method="post" asp-controller="UserDeliveryData" asp-action="DeleteUserDeliveryData" asp-route-id="@item.DataId">
+                                            <button class="btn btn-danger w-100" type="submit">Delete</button>
                                         </form>
                                     </div>
                                 </div>

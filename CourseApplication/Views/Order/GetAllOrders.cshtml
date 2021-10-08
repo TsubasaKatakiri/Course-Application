@@ -24,50 +24,48 @@
                             </h4>
                         </div>
                         <div class="card-body">
-                            <div class="container">
-                                <div class="row">
-                                    <p class="font-weight-light font-italic">Order created: <span>@Html.DisplayFor(modelItem => item.DateCreated)</span></p>
-                                    <p class="font-weight-light font-italic">Full name: <span>@Html.DisplayFor(modelItem => item.FullName)</span></p>
-                                    <p class="font-weight-light font-italic">
-                                        Address:
-                                        @{ if (item.Apartments != null)
-                                            {
-                                                <span>Apt. @Html.DisplayFor(modelItem => item.Apartments), </span>
-                                            }
-                                        }
-                                        <span>@Html.DisplayFor(modelItem => item.House)</span>&nbsp;<span>@Html.DisplayFor(modelItem => item.Street)</span><br />
-                                        <span>@Html.DisplayFor(modelItem => item.PostalIndex)</span>&nbsp;
-                                        <span>@Html.DisplayFor(modelItem => item.Region)</span>&nbsp;
-                                        <span>@Html.DisplayFor(modelItem => item.City)</span>
-                                        <br />
-                                        <span>@Html.DisplayFor(modelItem => item.Country)</span>
-                                    </p>
-                                    <p class="font-weight-light font-italic">Telephone: <span>@Html.DisplayFor(modelItem => item.Telephone)</span></p>
-                                </div>
-                            </div>
+                            <p>Order created: <span class="font-weight-light font-italic">@Html.DisplayFor(modelItem => item.DateCreated)</span></p>
+                            <p>Address: <span class="font-weight-light font-italic">@Html.DisplayFor(modelItem => item.FullAddressString)</span></p>
+                            <h5>Ordered goods:</h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             @foreach (var position in item.PositionList)
                             {
                                 <li class="list-group-item">
-                                    <div>
-                                        <h4>@Html.DisplayFor(modelItem => position.Name)</h4>
-                                        <p class="font-weight-light font-italic">Brand: <span>@Html.DisplayFor(modelItem => position.BrandName)</span></p>
-                                        <p class="font-weight-light font-italic">Category: <span>@Html.DisplayFor(modelItem => position.CategoryName)</span></p>
-                                        <p class="font-weight-light font-italic">Description: <span>@Html.DisplayFor(modelItem => position.ShortDescription)</span></p>
-                                        <h5 class="text-danger font-weight-bold">USD $@Html.DisplayFor(modelItem => position.Price)</h5>
-                                        <p class="font-weight-light font-italic">Quantity: <span>@Html.DisplayFor(modelItem => position.Number)</span></p>
-                                        <h5 class="font-weight-light font-italic">Total cost: <span>@Html.DisplayFor(modelItem => position.TotalPrice)</span></h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <h4>@Html.DisplayFor(modelItem => position.Name)</h4>
+                                        </div>
+                                        <div class="row py-1">
+                                            <div class="col-4 my-0">
+                                                <p class="font-weight-light font-italic my-1">Brand: <span>@Html.DisplayFor(modelItem => position.BrandName)</span></p>
+                                            </div>
+                                            <div class="col-4 my-0">
+                                                <p class="font-weight-light font-italic my-1">Category: <span>@Html.DisplayFor(modelItem => position.CategoryName)</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="row py-1">
+                                            <div class="col-4 my-0">
+                                                <p class="font-weight-light font-italic my-1">USD $@Html.DisplayFor(modelItem => position.Price)</p>
+                                            </div>
+                                            <div class="col-4 my-0">
+                                                <p class="font-weight-light font-italic my-1">Quantity: <span>@Html.DisplayFor(modelItem => position.Number)</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="row py-1">
+                                            <h5 class="text-danger font-weight-bold my-1">Total cost: USD $<span>@Html.DisplayFor(modelItem => position.TotalPrice)</span></h5>
+                                        </div>
                                     </div>
                                 </li>
                             }
                         </ul>
                         <div class="card-body">
-                            <h5>Total order cost:<span class="text-danger">@Html.DisplayFor(modelItem => item.TotalCost)</span></h5>
+                            <h5 class="my-1">Total order cost:<span class="text-danger"> USD $@Html.DisplayFor(modelItem => item.TotalCost)</span></h5>
                         </div>
                     </div>
                 }
             }
+        }
         }
     </div>
 
