@@ -151,7 +151,7 @@ namespace CourseApplication.BLL.Services
                                 ReviewId = r.Id,
                                 ProductId = r.ProductId,
                                 DateCreated = r.DateCreated,
-                                //Username = r.User.UserName,
+                                Username = r.Username,
                                 Score = r.Score,
                                 Text = r.Text,
                                 ProductName = r.Product.Name,

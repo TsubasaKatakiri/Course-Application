@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CourseApplication.BLL.Interfaces;
 using CourseApplication.BLL.Utility;
 using CourseApplication.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +27,9 @@ namespace CourseApplication
                 {
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    await RoleInitializer.InitializeAsync(userManager, rolesManager);
+                    var wishlistService = services.GetRequiredService<IWishlistService>();
+                    var cartService = services.GetRequiredService<ICartService>();
+                    await RoleInitializer.InitializeAsync(userManager, rolesManager, wishlistService, cartService);
                 }
                 catch (Exception ex)
                 {

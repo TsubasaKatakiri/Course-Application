@@ -31,6 +31,7 @@ namespace CourseApplication.BLL.Services
                 {
                     UserId = _review.UserId,
                     ProductId = _review.ProductId,
+                    Username = _review.Username,
                     DateCreated = DateTime.Now,
                     Score = _review.Score,
                     Text = _review.Text
@@ -138,7 +139,7 @@ namespace CourseApplication.BLL.Services
                         ReviewId = r.Id,
                         ProductId = r.ProductId,
                         DateCreated = r.DateCreated,
-                        //Username = r.User.Name,
+                        Username = r.Username,
                         Score = r.Score,
                         Text = r.Text,
                         ProductName = r.Product.Name,
