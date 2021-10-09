@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CourseApplication.BLL.Interfaces;
 using CourseApplication.BLL.VMs.Order;
 using CourseApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +28,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult GetAllOrders()
         {
             var orders = _orderService.FindOrder(null).OrderByDescending(o=>o.DateCreated);
@@ -34,6 +36,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult GetAllUserOrders()
         {
             var userId = Guid.Parse(_userManager.GetUserId(User));
@@ -42,6 +45,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult GetUserOrderById(Guid id)
         {
             var userId = Guid.Parse(_userManager.GetUserId(User));
@@ -50,6 +54,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult CreateNewOrder()
         {
             var userId = Guid.Parse(_userManager.GetUserId(User));
@@ -59,6 +64,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateNewOrder([FromForm] OrderCreate order)
         {

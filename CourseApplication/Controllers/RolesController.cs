@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CourseApplication.BLL.VMs.Identity;
 using CourseApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,12 +22,15 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetRoles() => View(_roleManager.Roles.ToList());
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateRole() => View();
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole(string name)
         {
             if (!string.IsNullOrEmpty(name))
@@ -48,6 +52,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRole(string id)
         {
             IdentityRole role = await _roleManager.FindByIdAsync(id);
@@ -59,9 +64,11 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult UserList() => View(_userManager.Users.ToList());
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditRoles(string userId)
         {
             User user = await _userManager.FindByIdAsync(userId);
@@ -82,6 +89,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditRoles(string userId, List<string> roles)
         {
             User user = await _userManager.FindByIdAsync(userId);

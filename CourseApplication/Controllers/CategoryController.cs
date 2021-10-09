@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CourseApplication.BLL.Interfaces;
 using CourseApplication.BLL.VMs.Category;
 using CourseApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,7 @@ namespace CourseApplication.Controllers
 
         //Get all categories
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult GetAllCategories()
         {
             var categories = _categoryService.FindCategory(null);
@@ -32,6 +34,7 @@ namespace CourseApplication.Controllers
 
         //Get a category by its ID
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult GetCategoryById(Guid id)
         {
             var category = _categoryService.FindCategory(p => p.Id == id).SingleOrDefault();
@@ -40,6 +43,7 @@ namespace CourseApplication.Controllers
 
         //Creating new category (GET)
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateNewCategory()
         {
             return View(new CategoryCreate());
@@ -47,6 +51,7 @@ namespace CourseApplication.Controllers
 
         //Creating new category (POST)
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateCategory([FromForm] CategoryCreate category)
         {
@@ -68,14 +73,16 @@ namespace CourseApplication.Controllers
 
         //Editing existing category (GET)
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditCategory(Guid id)
         {
             var category = _categoryService.FindCategory(p => p.Id == id).SingleOrDefault();
             return View(category);
         }
 
-        //Editing existing category (PUT)
-        [HttpPut]
+        //Editing existing category (POST)
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditCategory([FromForm] CategoryData category)
         {
@@ -94,8 +101,9 @@ namespace CourseApplication.Controllers
             }
         }
 
-        //Deleting existing category (DELETE)
-        [HttpDelete]
+        //Deleting existing category (POST)
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteCategory(Guid id)
         {

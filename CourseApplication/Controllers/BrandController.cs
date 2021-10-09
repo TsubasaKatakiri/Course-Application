@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CourseApplication.BLL.Interfaces;
 using CourseApplication.BLL.VMs.Brand;
 using CourseApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,7 @@ namespace CourseApplication.Controllers
 
         //Get all brands
         [HttpGet]
+        [Authorize (Roles = "Admin")]
         public ActionResult GetAllBrands()
         {
             var brands = _brandService.FindBrand(null);
@@ -32,6 +34,7 @@ namespace CourseApplication.Controllers
 
         //Get a brand by its ID
         [HttpGet]
+        [Authorize (Roles = "Admin")]
         public ActionResult GetBrandById(Guid id)
         {
             var brand = _brandService.FindBrand(p => p.Id == id).SingleOrDefault();
@@ -40,6 +43,7 @@ namespace CourseApplication.Controllers
 
         //Creating new brand (GET)
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateNewBrand()
         {
             return View(new BrandCreate());
@@ -47,6 +51,7 @@ namespace CourseApplication.Controllers
 
         //Creating new brand (POST)
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateBrand([FromForm] BrandCreate brand)
         {
@@ -68,14 +73,16 @@ namespace CourseApplication.Controllers
 
         //Editing existing brand (GET)
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditBrand(Guid id)
         {
             var brand = _brandService.FindBrand(p => p.Id == id).SingleOrDefault();
             return View(brand);
         }
 
-        //Editing existing brand (PUT)
-        [HttpPut]
+        //Editing existing brand (POST)
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditBrand([FromForm] BrandData brand)
         {
@@ -94,8 +101,9 @@ namespace CourseApplication.Controllers
             }
         }
 
-        //Deleting existing brand (DELETE)
-        [HttpDelete]
+        //Deleting existing brand (POST)
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteBrand(Guid id)
         {

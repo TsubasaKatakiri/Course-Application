@@ -1,15 +1,27 @@
 ﻿@model IEnumerable<CourseApplication.Models.User>
 
-    <h2>User roles control</h2>
-    <a class="btn btn-sm btn-primary" asp-controller="Roles" asp-action="GetRoles">Roles List</a>
-    <table class="table">
-        @foreach (var user in Model)
-        {
+<div class="container">
+    <div class="row d-flex justify-content-between my-3">
+        <h3>User roles control</h3>
+        <a class="btn btn-primary" asp-controller="Roles" asp-action="GetRoles">Roles List</a>
+    </div>
+    <div class="row">
+        <table class="table w-100">
             <tr>
-                <td>@user.Email</td>
-                <td>
-                    <a class="btn btn-primary" asp-action="EditRoles" asp-route-userid="@user.Id">Edit roles</a>
-                </td>
+                <th>Email</th>
+                <th>Name</th>
+                <th></th>
             </tr>
-        }
-    </table>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>@user.Name</td>
+                    <td class="d-flex justify-content-end">
+                        <a class="btn btn-primary" asp-action="EditRoles" asp-route-userid="@user.Id">Edit role</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -42,7 +42,7 @@
                                         <p class="font-weight-light font-italic mb-1"><b>Telephone</b>: <span>@Html.DisplayFor(modelItem => item.Telephone)</span></p>
                                     </div>
                                     <div class="col-sm-2">
-                                        <a class="btn btn-primary w-100 mb-2" asp-controller="UserDeliveryData" asp-action="CEditUserDeliveryData" asp-route-id="@item.DataId">Edit</a>
+                                        <a class="btn btn-primary w-100 mb-2" asp-controller="UserDeliveryData" asp-action="EditUserDeliveryData" asp-route-id="@item.DataId">Edit</a>
                                         <form class="w-100" method="post" asp-controller="UserDeliveryData" asp-action="DeleteUserDeliveryData" asp-route-id="@item.DataId">
                                             <button class="btn btn-danger w-100" type="submit">Delete</button>
                                         </form>

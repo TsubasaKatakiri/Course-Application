@@ -139,7 +139,7 @@ namespace CourseApplication.BLL.Services
                             {
                                 EntityId = f.MediaEntityId,
                                 Name = f.Name,
-                                FileType =f.FileType,
+                                FileType = f.FileType,
                                 DataFiles = f.DataFiles,
                                 CreatedOn = f.CreatedOn
                             };
@@ -155,6 +155,17 @@ namespace CourseApplication.BLL.Services
                                 Score = r.Score,
                                 Text = r.Text,
                                 ProductName = r.Product.Name,
+                                Files = r.Files.Select(f =>
+                                {
+                                    return new FileCreate()
+                                    {
+                                        EntityId = f.MediaEntityId,
+                                        Name = f.Name,
+                                        FileType = f.FileType,
+                                        DataFiles = f.DataFiles,
+                                        CreatedOn = f.CreatedOn
+                                    };
+                                }).ToList(),
                             };
                         }).OrderByDescending(o => o.DateCreated).ToList()
                     };

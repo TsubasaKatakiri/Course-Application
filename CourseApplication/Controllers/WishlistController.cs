@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CourseApplication.BLL.Interfaces;
 using CourseApplication.BLL.VMs.Wishlist;
 using CourseApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult GetWishlistById()
         {
             var userId = Guid.Parse(_userManager.GetUserId(User));

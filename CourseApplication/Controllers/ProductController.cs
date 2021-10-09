@@ -9,6 +9,7 @@ using CourseApplication.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CourseApplication.Controllers
 {
@@ -64,20 +65,24 @@ namespace CourseApplication.Controllers
         public async Task<IActionResult> GetProductById(Guid id)
         {
             var product = _productService.FindProduct(p => p.Id == id).SingleOrDefault();
-            var userId = Guid.Parse(_userManager.GetUserId(User));
-            var wishlist = _wishlistService.FindWishlistById(userId);
-            var cart = _cartService.FindCartById(userId);
-            Guid? wishlistPositionId = await _wishlistPositionService.FindWishlistPositionByWishlistIdAsync(wishlist.WishlistId, id);
-            if(wishlistPositionId != null)
+            var user = _userManager.GetUserId(User);
+            if(user != null)
             {
-                product.InWishlist = true;
-                product.WishlistPositionId = wishlistPositionId;
-            }
-            Guid? cartPositionId = await _cartPositionService.FindCartPositionByCartIdAsync(cart.CartId, id);
-            if (cartPositionId != null)
-            {
-                product.InCart = true;
-                product.CartPositionId = cartPositionId;
+                var userId = Guid.Parse(user);
+                var wishlist = _wishlistService.FindWishlistById(userId);
+                var cart = _cartService.FindCartById(userId);
+                Guid? wishlistPositionId = await _wishlistPositionService.FindWishlistPositionByWishlistIdAsync(wishlist.WishlistId, id);
+                if (wishlistPositionId != null)
+                {
+                    product.InWishlist = true;
+                    product.WishlistPositionId = wishlistPositionId;
+                }
+                Guid? cartPositionId = await _cartPositionService.FindCartPositionByCartIdAsync(cart.CartId, id);
+                if (cartPositionId != null)
+                {
+                    product.InCart = true;
+                    product.CartPositionId = cartPositionId;
+                }
             }
             return View(product);
         }
@@ -85,6 +90,7 @@ namespace CourseApplication.Controllers
 
         //Creating new product (GET)
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateNewProduct()
         {
             var categories = _categoryService.FindCategory(null);
@@ -94,6 +100,7 @@ namespace CourseApplication.Controllers
 
         //Creating new product (POST)
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateNewProduct([FromForm] ProductCreate product)
         {
@@ -114,6 +121,7 @@ namespace CourseApplication.Controllers
 
         //Editing existing product (GET)
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditProduct(Guid id)
         {
             var product = _productService.FindProduct(p => p.Id == id).SingleOrDefault();
@@ -126,6 +134,7 @@ namespace CourseApplication.Controllers
 
         //Editing existing product (POST)
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditProduct([FromForm] ProductData product)
         {
@@ -146,6 +155,7 @@ namespace CourseApplication.Controllers
 
         //Deleting existing product (POST)
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteProduct(Guid id)
         {

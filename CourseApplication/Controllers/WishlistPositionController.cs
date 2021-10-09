@@ -6,6 +6,7 @@ using CourseApplication.BLL.Interfaces;
 using CourseApplication.BLL.VMs.OrderPosition;
 using CourseApplication.BLL.VMs.WishlistPosition;
 using CourseApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +27,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateWishlistPosition(Guid productId)
         {
             try
@@ -51,6 +53,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> DeleteWishlistPosition(Guid positionId)
         {
             try

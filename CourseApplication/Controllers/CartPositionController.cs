@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CourseApplication.BLL.Interfaces;
 using CourseApplication.BLL.VMs.OrderPosition;
 using CourseApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateCartPosition(Guid productId)
         {
             try
@@ -50,6 +52,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> DeleteCartPosition(Guid positionId)
         {
             try

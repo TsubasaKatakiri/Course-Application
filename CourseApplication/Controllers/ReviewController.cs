@@ -58,6 +58,7 @@ namespace CourseApplication.Controllers
 
         //Editing existing product (GET)
         [HttpGet]
+        [Authorize]
         public ActionResult EditReview(Guid id)
         {
             var review = _reviewService.FindReview(p => p.Id == id).SingleOrDefault();
@@ -65,8 +66,9 @@ namespace CourseApplication.Controllers
         }
 
 
-        //Editing existing product (PUT)
-        [HttpPut]
+        //Editing existing product (POST)
+        [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditReview([FromForm] ReviewData review)
         {
@@ -84,21 +86,5 @@ namespace CourseApplication.Controllers
                 return View();
             }
         }
-
-        ////Deleting existing review (DELETE)
-        //[HttpDelete]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteProduct(Guid id)
-        //{
-        //    try
-        //    {
-        //        await _reviewService.DeleteReviewAsync(id);
-        //        return RedirectToRoute("default", new { controller = "Product", action = "GetProductById", id = review.ProductId });
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }

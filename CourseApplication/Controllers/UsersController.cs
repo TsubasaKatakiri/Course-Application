@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CourseApplication.BLL.VMs.Identity;
 using CourseApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,12 +20,15 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult UserList() => View(_userManager.Users.ToList());
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateUser() => View();
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateUser(UserCreate model)
         {
             if (ModelState.IsValid)
@@ -47,6 +51,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> EditUser(string id)
         {
             User user = await _userManager.FindByIdAsync(id);
@@ -59,6 +64,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> EditUser(UserEdit _user)
         {
             if (ModelState.IsValid)
@@ -88,6 +94,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteUser(string id)
         {
             User user = await _userManager.FindByIdAsync(id);
@@ -98,6 +105,8 @@ namespace CourseApplication.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        [Authorize]
         public async Task<IActionResult> ChangePassword(string id)
         {
             User user = await _userManager.FindByIdAsync(id);
@@ -110,6 +119,7 @@ namespace CourseApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> ChangePassword(ChangePassword model)
         {
             if (ModelState.IsValid)
